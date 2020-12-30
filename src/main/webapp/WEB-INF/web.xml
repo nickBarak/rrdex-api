@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<display-name>project0rrdex</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<filter>
+        <filter-name>cors</filter-name>
+		<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+		<init-param>
+			<param-name>cors.allowed.origins</param-name>
+			<param-value>http://localhost:3000,http://54.193.1.233:8080,http://ec2-54-193-1-233.us-west-1.compute.amazonaws.com:8080</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.allowed.methods</param-name>
+			<param-value>GET,POST,PUT,DELETE,OPTIONS,PATCH,HEAD</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.allowed.headers</param-name>
+			<param-value>Content-Type,X-Requested-With,Accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.exposed.headers</param-name>
+			<param-value>Access-Control-Allow-Origin,Access-Control-Allow-Credentials</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.support.credentials</param-name>
+			<param-value>true</param-value>
+		</init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>cors</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+	<!-- <listener> <listener-class>com.revature.rrdex.servercom.ContextListener</listener-class> 
+		</listener> -->
+	<servlet>
+		<servlet-name>GetPokemon</servlet-name>
+		<servlet-class>com.revature.rrdex.servercom.GetPokemonServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetPokemon</servlet-name>
+		<url-pattern>/pokemon</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetPokemon</servlet-name>
+		<url-pattern>/pokemon/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GetAbility</servlet-name>
+		<servlet-class>com.revature.rrdex.servercom.GetAbilityServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAbility</servlet-name>
+		<url-pattern>/ability</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserLogin</servlet-name>
+		<servlet-class>com.revature.rrdex.servercom.UserLoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserLogin</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserLogout</servlet-name>
+		<servlet-class>com.revature.rrdex.servercom.UserLogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserLogout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserSignup</servlet-name>
+		<servlet-class>com.revature.rrdex.servercom.SignupServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserSignup</servlet-name>
+		<url-pattern>/signup</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
